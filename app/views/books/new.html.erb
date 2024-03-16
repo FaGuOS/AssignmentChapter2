@@ -1,0 +1,31 @@
+<div class="container">
+
+  <div class="post-list">
+    <!-- 投稿一覧 -->
+    <h1>Books</h1>
+    <% if @books.present? %>
+      <% @books.each do |book| %>
+        <p>Title</p>
+        <span><%= book.title %></span>
+        <p>Body</p>
+        <span><%= book.body %></span>
+        
+      <% end %>
+  <!-- 投稿がされていないときの処置 -->
+    <% else %>
+      <p>No books</p>
+  <% end %>
+</div>
+
+  <!-- 投稿フォーム -->
+  <div class="post-form">
+    <h1>New book</h1>
+    <%= form_with model: @book do |f| %>
+      <h4>Title</h4>
+      <%= f.text_field :title %>
+	
+  <h4>Body</h4>
+  <%= f.text_area :body %>
+    <%= f.submit 'Create Book' %>
+    <% end %>
+  </div>
